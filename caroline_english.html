@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>English Revision – Miss Caroline</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink2: #3d3d5c;
+    --ink3: #7b7b9a;
+    --cream: #faf8f4;
+    --paper: #ffffff;
+    --gold: #c9a84c;
+    --gold-light: #f5e9cc;
+    --gold-dark: #8b6914;
+    --teal: #2a7c6f;
+    --teal-light: #e0f2ef;
+    --teal-dark: #1a5048;
+    --rose: #c0535a;
+    --rose-light: #fdeaeb;
+    --border: rgba(26,26,46,0.12);
+    --border-strong: rgba(26,26,46,0.25);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --shadow: 0 2px 16px rgba(26,26,46,0.08);
+    --shadow-lg: 0 8px 32px rgba(26,26,46,0.12);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .site-header {
+    background: var(--ink);
+    color: #fff;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; letter-spacing: 0.02em; }
+  .site-logo span { color: var(--gold); }
+  .header-nav { display: flex; gap: 8px; }
+  .nav-btn {
+    background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff;
+    border-radius: 8px; padding: 6px 16px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.1); }
+  .nav-btn.active { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 600; }
+
+  .screen { display: none; }
+  .screen.visible { display: block; }
+
+  .hero {
+    background: var(--ink);
+    color: #fff;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,168,76,0.18), transparent);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block; background: var(--gold-light); color: var(--gold-dark);
+    border-radius: 99px; padding: 4px 16px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    max-width: 640px;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 480px; margin: 0 auto 2.5rem; }
+
+  .package-preview {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    max-width: 420px;
+    margin: 0 auto 3rem;
+    text-align: left;
+  }
+  .package-preview-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+  .pkg-items { display: flex; gap: 12px; }
+  .pkg-item {
+    flex: 1; background: rgba(255,255,255,0.07); border-radius: 10px;
+    padding: 14px 12px; text-align: center;
+  }
+  .pkg-icon { font-size: 22px; margin-bottom: 6px; }
+  .pkg-label { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  .btn-primary {
+    background: var(--gold); color: var(--ink); border: none;
+    border-radius: 10px; padding: 14px 36px; font-size: 15px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: #d4a93d; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: none; color: var(--teal); border: 1.5px solid var(--teal);
+    border-radius: 10px; padding: 12px 28px; font-size: 14px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--teal-light); }
+  .btn-ghost {
+    background: none; color: var(--ink2); border: 1px solid var(--border-strong);
+    border-radius: 10px; padding: 10px 20px; font-size: 13px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(26,26,46,0.05); }
+
+  .section { padding: 3rem 1.5rem; max-width: 760px; margin: 0 auto; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.4rem; color: var(--ink); }
+  .section-sub { color: var(--ink3); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  .grade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .grade-card {
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .grade-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+  .grade-card.selected { border-color: var(--teal); background: var(--teal-light); box-shadow: 0 0 0 3px rgba(42,124,111,0.15); }
+  .grade-card-name { font-weight: 600; font-size: 1rem; color: var(--ink); margin-bottom: 4px; }
+  .grade-card-price { font-size: 1.2rem; font-weight: 700; color: var(--teal); }
+  .grade-card-price span { font-size: 12px; font-weight: 400; color: var(--ink3); }
+  .grade-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: var(--gold-light); color: var(--gold-dark);
+    border-radius: 99px; padding: 2px 10px; font-size: 11px; font-weight: 600;
+  }
+  .grade-check {
+    position: absolute; top: 10px; right: 10px;
+    width: 22px; height: 22px; background: var(--teal); border-radius: 50%;
+    display: none; align-items: center; justify-content: center;
+    color: #fff; font-size: 12px;
+  }
+  .grade-card.selected .grade-check { display: flex; }
+  .grade-card.selected .grade-badge { display: none; }
+
+  .pkg-box {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .pkg-box-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.25rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pkg-box-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+  .pkg-box-price { font-size: 1.6rem; font-weight: 700; color: var(--teal); }
+  .pkg-components { display: flex; gap: 10px; }
+  .pkg-comp {
+    flex: 1; text-align: center; padding: 12px 8px;
+    background: var(--cream); border-radius: 10px;
+  }
+  .pkg-comp-icon { font-size: 1.4rem; margin-bottom: 4px; }
+  .pkg-comp-name { font-size: 12px; font-weight: 600; color: var(--ink2); }
+  .pkg-comp-desc { font-size: 11px; color: var(--ink3); margin-top: 2px; }
+
+  .payment-steps { margin-bottom: 2rem; }
+  .step-row {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 1rem 0; border-bottom: 1px solid var(--border);
+  }
+  .step-row:last-child { border-bottom: none; }
+  .step-num {
+    width: 32px; height: 32px; min-width: 32px; border-radius: 50%;
+    background: var(--ink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .step-content { flex: 1; }
+  .step-label { font-weight: 600; font-size: 0.95rem; color: var(--ink); margin-bottom: 3px; }
+  .step-desc { font-size: 13px; color: var(--ink3); }
+  .instapy-box {
+    background: var(--teal-light);
+    border: 1.5px solid var(--teal);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 8px;
+  }
+  .instapy-handle { font-size: 1.1rem; font-weight: 700; color: var(--teal-dark); }
+  .copy-btn {
+    margin-left: auto; background: var(--teal); color: #fff; border: none;
+    border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600;
+    font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s;
+  }
+  .copy-btn:hover { background: var(--teal-dark); }
+
+  .upload-zone {
+    border: 2px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--paper);
+    position: relative;
+  }
+  .upload-zone:hover, .upload-zone.dragover { border-color: var(--teal); background: var(--teal-light); }
+  .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .upload-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+  .upload-sub { font-size: 13px; color: var(--ink3); }
+  .upload-preview {
+    margin-top: 14px; padding: 12px 16px;
+    background: var(--cream); border-radius: 10px;
+    display: flex; align-items: center; gap: 10px; text-align: left;
+  }
+  .upload-preview-icon { font-size: 1.5rem; }
+  .upload-preview-name { font-size: 13px; font-weight: 600; }
+  .upload-preview-size { font-size: 11px; color: var(--ink3); }
+  .remove-btn { margin-left: auto; background: none; border: none; color: var(--rose); cursor: pointer; font-size: 18px; }
+
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; }
+  .form-input {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+    border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink);
+    background: var(--paper); transition: border-color 0.2s; outline: none;
+  }
+  .form-input:focus { border-color: var(--teal); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .validation-box {
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .validation-box.checking { background: #fff9e6; border: 1px solid #f0c84a; }
+  .validation-box.success { background: var(--teal-light); border: 1px solid var(--teal); }
+  .validation-box.error { background: var(--rose-light); border: 1px solid var(--rose); }
+  .validation-icon { font-size: 1.4rem; }
+  .validation-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .validation-msg { font-size: 13px; color: var(--ink2); }
+
+  .spinner {
+    width: 18px; height: 18px; border: 2px solid rgba(201,168,76,0.3);
+    border-top-color: var(--gold); border-radius: 50%;
+    animation: spin 0.7s linear infinite; display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .success-card {
+    background: var(--paper); border-radius: var(--radius-lg);
+    padding: 3rem 2rem; text-align: center; box-shadow: var(--shadow-lg);
+    max-width: 480px; margin: 4rem auto;
+  }
+  .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+  .success-sub { color: var(--ink3); font-size: 0.95rem; margin-bottom: 2rem; }
+  .success-details {
+    background: var(--cream); border-radius: 10px; padding: 1rem 1.25rem; text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  .success-detail-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; }
+  .success-detail-label { color: var(--ink3); }
+  .success-detail-val { font-weight: 600; }
+
+  .admin-login-card {
+    background: var(--paper); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+    max-width: 380px; margin: 4rem auto;
+    box-shadow: var(--shadow);
+  }
+  .admin-header {
+    background: var(--ink);
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .admin-title { color: #fff; font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+  .admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--paper); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  }
+  .stat-label { font-size: 12px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .stat-value { font-size: 1.9rem; font-weight: 700; color: var(--ink); }
+  .stat-sub { font-size: 12px; color: var(--teal); margin-top: 2px; font-weight: 600; }
+
+  .table-wrap { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .table-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .table-header-title { font-weight: 600; font-size: 0.95rem; }
+  table { width: 100%; border-collapse: collapse; }
+  thead { background: var(--cream); }
+  th { text-align: left; padding: 10px 16px; font-size: 12px; font-weight: 600; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; }
+  td { padding: 12px 16px; font-size: 14px; border-top: 1px solid var(--border); }
+  tr:hover td { background: var(--cream); }
+  .badge {
+    display: inline-block; border-radius: 99px; padding: 3px 12px;
+    font-size: 12px; font-weight: 600;
+  }
+  .badge-pending { background: #fff9e6; color: #8b6914; }
+  .badge-verified { background: var(--teal-light); color: var(--teal-dark); }
+  .badge-rejected { background: var(--rose-light); color: var(--rose); }
+
+  .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 2rem; }
+  .breakdown-card {
+    background: var(--paper); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.25rem;
+  }
+  .breakdown-grade { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+  .breakdown-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; }
+  .breakdown-key { color: var(--ink3); }
+  .breakdown-val { font-weight: 600; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; background: var(--cream); border-radius: 10px; padding: 4px; }
+  .tab-btn {
+    flex: 1; padding: 8px 12px; border: none; background: none;
+    border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    font-weight: 500; color: var(--ink3); cursor: pointer; transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--paper); color: var(--ink); font-weight: 600; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+  .toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: var(--ink); color: #fff; border-radius: 10px;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    box-shadow: var(--shadow-lg); transform: translateY(100px);
+    transition: transform 0.3s; pointer-events: none;
+  }
+  .toast.show { transform: translateY(0); }
+
+  .progress-bar { display: flex; gap: 0; margin-bottom: 2.5rem; }
+  .progress-step { flex: 1; display: flex; align-items: center; }
+  .progress-dot {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+    border: 2px solid var(--border-strong); background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--ink3); position: relative; z-index: 1;
+  }
+  .progress-dot.done { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .progress-dot.active { border-color: var(--teal); color: var(--teal); }
+  .progress-line { flex: 1; height: 2px; background: var(--border); }
+  .progress-line.done { background: var(--teal); }
+  .progress-label { position: absolute; top: 36px; left: 50%; transform: translateX(-50%); font-size: 11px; white-space: nowrap; color: var(--ink3); font-weight: 500; }
+
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200;
+    display: flex; align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal {
+    background: var(--paper); border-radius: var(--radius-lg);
+    padding: 2rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .modal-sub { font-size: 13px; color: var(--ink3); margin-bottom: 1.5rem; }
+  .screenshot-img { width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<header class="site-header">
+  <div class="site-logo">Miss <span>Caroline</span> · English</div>
+  <div class="header-nav">
+    <button class="nav-btn active" onclick="showScreen('home')">Home</button>
+    <button class="nav-btn" onclick="showScreen('enroll')">Book Now</button>
+    <button class="nav-btn" onclick="showScreen('admin-login')">Admin</button>
+  </div>
+</header>
+
+<!-- HOME -->
+<div id="screen-home" class="screen visible">
+  <div class="hero">
+    <div class="hero-tag">2025–2026 Academic Year</div>
+    <h1>Master English with <em>structured</em> revision</h1>
+    <p>Comprehensive revision sessions covering Vocabulary, Grammar, and Story — all in one package.</p>
+    <div class="package-preview">
+      <div class="package-preview-title">What's included in every session</div>
+      <div class="pkg-items">
+        <div class="pkg-item"><div class="pkg-icon">📚</div><div class="pkg-label">Vocabulary</div></div>
+        <div class="pkg-item"><div class="pkg-icon">✏️</div><div class="pkg-label">Grammar</div></div>
+        <div class="pkg-item"><div class="pkg-icon">📖</div><div class="pkg-label">Story</div></div>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="showScreen('enroll')">Book Your Revision →</button>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Available Grades & Pricing</h2>
+    <p class="section-sub">Select your grade below to begin enrollment</p>
+    <div class="grade-grid">
+      <div class="grade-card" onclick="startEnroll('1st Prep')">
+        <div class="grade-card-name">1st Prep</div>
+        <div class="grade-card-price">900 <span>EGP</span></div>
+        <div class="grade-check">✓</div>
+      </div>
+      <div class="grade-card" onclick="startEnroll('2nd Prep')">
+        <div class="grade-card-name">2nd Prep</div>
+        <div class="grade-card-price">900 <span>EGP</span></div>
+        <div class="grade-check">✓</div>
+      </div>
+      <div class="grade-card" onclick="startEnroll('3rd Prep')">
+        <div class="grade-card-name">3rd Prep</div>
+        <div class="grade-card-price">1050 <span>EGP</span></div>
+        <div class="grade-badge">Special</div>
+        <div class="grade-check">✓</div>
+      </div>
+      <div class="grade-card" onclick="startEnroll('1st Sec')">
+        <div class="grade-card-name">1st Sec</div>
+        <div class="grade-card-price">900 <span>EGP</span></div>
+        <div class="grade-check">✓</div>
+      </div>
+      <div class="grade-card" onclick="startEnroll('2nd Sec')">
+        <div class="grade-card-name">2nd Sec</div>
+        <div class="grade-card-price">900 <span>EGP</span></div>
+        <div class="grade-check">✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENROLL -->
+<div id="screen-enroll" class="screen">
+  <div class="section" style="max-width:640px;">
+    <div class="progress-bar" style="margin-bottom:3rem; position:relative;">
+      <div class="progress-step" style="position:relative;">
+        <div class="progress-dot active" id="pdot1">1<span class="progress-label">Grade</span></div>
+        <div class="progress-line" id="pline1"></div>
+      </div>
+      <div class="progress-step" style="position:relative;">
+        <div class="progress-dot" id="pdot2">2<span class="progress-label">Details</span></div>
+        <div class="progress-line" id="pline2"></div>
+      </div>
+      <div class="progress-step" style="position:relative;">
+        <div class="progress-dot" id="pdot3">3<span class="progress-label">Payment</span></div>
+        <div class="progress-line" id="pline3"></div>
+      </div>
+      <div class="progress-step" style="position:relative;">
+        <div class="progress-dot" id="pdot4">4<span class="progress-label">Upload</span></div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div id="enroll-step1">
+      <h2 class="section-title">Choose your grade</h2>
+      <p class="section-sub">The revision package is the same for all grades — one complete bundle.</p>
+      <div class="grade-grid" id="grade-select-grid"></div>
+      <button class="btn-primary" onclick="goStep(2)" id="step1-next" disabled style="width:100%;">Continue →</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div id="enroll-step2" class="hidden">
+      <h2 class="section-title">Your details</h2>
+      <p class="section-sub">We'll use this to confirm your payment and send updates.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" id="f-first" placeholder="Ahmed" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" id="f-last" placeholder="Hassan" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" type="tel" id="f-phone" placeholder="01012345678" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">School Name</label>
+        <input class="form-input" type="text" id="f-school" placeholder="Your school" />
+      </div>
+      <div style="display:flex; gap:10px; margin-top:1rem;">
+        <button class="btn-ghost" onclick="goStep(1)" style="flex:1;">← Back</button>
+        <button class="btn-primary" onclick="goStep(3)" style="flex:2;">Continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div id="enroll-step3" class="hidden">
+      <h2 class="section-title">Complete your payment</h2>
+      <p class="section-sub">Send the exact amount to the InstaPay account below.</p>
+      <div class="pkg-box">
+        <div class="pkg-box-header">
+          <div>
+            <div class="pkg-box-title">English Revision Package</div>
+            <div style="font-size:13px; color:var(--ink3);" id="pkg-grade-label">Grade: —</div>
+          </div>
+          <div class="pkg-box-price" id="pkg-price-display">— EGP</div>
+        </div>
+        <div class="pkg-components">
+          <div class="pkg-comp"><div class="pkg-comp-icon">📚</div><div class="pkg-comp-name">Vocabulary</div><div class="pkg-comp-desc">Words & usage</div></div>
+          <div class="pkg-comp"><div class="pkg-comp-icon">✏️</div><div class="pkg-comp-name">Grammar</div><div class="pkg-comp-desc">Rules & practice</div></div>
+          <div class="pkg-comp"><div class="pkg-comp-icon">📖</div><div class="pkg-comp-name">Story</div><div class="pkg-comp-desc">Reading & analysis</div></div>
+        </div>
+      </div>
+      <div class="payment-steps">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-label">Send payment via InstaPay</div>
+            <div class="step-desc">Transfer the exact amount to this InstaPay account:</div>
+            <div class="instapy-box">
+              <div>
+                <div style="font-size:11px; color:var(--teal); font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">InstaPay Username</div>
+                <div class="instapy-handle">carolinetoubia@instapay</div>
+              </div>
+              <button class="copy-btn" onclick="copyInstapy()">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-label">Take a screenshot</div>
+            <div class="step-desc">After payment, take a clear screenshot showing the confirmation, amount, and date.</div>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-label">Upload below</div>
+            <div class="step-desc">Continue to the next step and upload your screenshot for verification.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn-ghost" onclick="goStep(2)" style="flex:1;">← Back</button>
+        <button class="btn-primary" onclick="goStep(4)" style="flex:2;">I've paid → Upload Screenshot</button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div id="enroll-step4" class="hidden">
+      <h2 class="section-title">Upload payment screenshot</h2>
+      <p class="section-sub">Our system will verify your screenshot automatically. This takes a few seconds.</p>
+      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('screenshot-input').click()">
+        <input type="file" id="screenshot-input" accept="image/*" onchange="handleFileSelect(this)" />
+        <div class="upload-icon">🖼️</div>
+        <div class="upload-title">Click to upload or drag & drop</div>
+        <div class="upload-sub">PNG, JPG, WEBP — clear screenshot of payment confirmation</div>
+      </div>
+      <div id="file-preview" class="hidden" style="margin-top:12px;"></div>
+      <div id="validation-result" class="hidden"></div>
+      <div style="display:flex; gap:10px; margin-top:1.5rem;">
+        <button class="btn-ghost" onclick="goStep(3)" style="flex:1;">← Back</button>
+        <button class="btn-primary" id="submit-btn" onclick="submitEnrollment()" style="flex:2;" disabled>Submit Enrollment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div id="screen-success" class="screen">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Enrollment Submitted!</div>
+    <div class="success-sub">Your payment is being reviewed. Miss Caroline will confirm your spot soon.</div>
+    <div class="success-details" id="success-details"></div>
+    <p style="font-size:13px; color:var(--ink3); margin-bottom:1.5rem;">Good luck with your revision!</p>
+    <button class="btn-primary" onclick="showScreen('home')">Back to Home</button>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="screen-admin-login" class="screen">
+  <div class="admin-login-card">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div style="font-size:2.5rem; margin-bottom:0.75rem;">🔐</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:0.25rem;">Admin Access</div>
+      <div style="font-size:13px; color:var(--ink3);">Miss Caroline's dashboard</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input class="form-input" type="password" id="admin-pass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')adminLogin()" />
+    </div>
+    <button class="btn-primary" onclick="adminLogin()" style="width:100%;">Sign In</button>
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div id="screen-admin" class="screen">
+  <div class="admin-header">
+    <div class="admin-title">📊 Payment Dashboard — Miss Caroline</div>
+    <button class="nav-btn" onclick="showScreen('home')" style="font-size:12px;">Sign Out</button>
+  </div>
+  <div class="section" style="max-width:900px;">
+    <div class="admin-stats" id="admin-stats"></div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('payments')">All Payments</button>
+      <button class="tab-btn" onclick="switchTab('breakdown')">By Grade</button>
+      <button class="tab-btn" onclick="switchTab('pending')">Pending Review</button>
+    </div>
+    <div id="tab-payments">
+      <div class="table-wrap">
+        <div class="table-header">
+          <div class="table-header-title">Enrolled Students</div>
+          <button class="btn-ghost" onclick="renderAdmin()" style="font-size:12px; padding:6px 14px;">↻ Refresh</button>
+        </div>
+        <table>
+          <thead><tr><th>Name</th><th>Grade</th><th>Amount</th><th>School</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="payments-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div id="tab-breakdown" class="hidden">
+      <div class="breakdown-grid" id="breakdown-grid"></div>
+      <div class="table-wrap">
+        <div class="table-header"><div class="table-header-title">Revenue by Grade</div></div>
+        <table><thead><tr><th>Grade</th><th>Students</th><th>Price/Student</th><th>Total Revenue</th></tr></thead>
+        <tbody id="breakdown-tbody"></tbody></table>
+      </div>
+    </div>
+    <div id="tab-pending" class="hidden">
+      <div id="pending-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-title">Review Payment Screenshot</div>
+    <div class="modal-sub" id="modal-student-info"></div>
+    <img id="modal-img" class="screenshot-img" src="" alt="Payment screenshot" />
+    <div style="display:flex; gap:10px;">
+      <button class="btn-secondary" onclick="approveStudent()" style="flex:1; border-color:var(--teal); color:var(--teal);">✓ Approve</button>
+      <button class="btn-secondary" onclick="rejectStudent()" style="flex:1; border-color:var(--rose); color:var(--rose);">✗ Reject</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const GRADES = { '1st Prep': 900, '2nd Prep': 900, '3rd Prep': 1050, '1st Sec': 900, '2nd Sec': 900 };
+const ADMIN_PASS = 'caroline2025';
+const INSTAPY_HANDLE = 'carolinetoubia@instapay';
+
+let state = { currentGrade: null, currentStep: 1, uploadedFile: null, uploadedDataUrl: null, validationPassed: false, modalStudentId: null };
+
+function getStudents() { try { return JSON.parse(localStorage.getItem('students_caroline') || '[]'); } catch { return []; } }
+function saveStudents(arr) { localStorage.setItem('students_caroline', JSON.stringify(arr)); }
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
+  document.getElementById('screen-' + name).classList.add('visible');
+  if (name === 'admin') renderAdmin();
+  window.scrollTo(0, 0);
+}
+
+function startEnroll(grade) {
+  state.currentGrade = grade;
+  showScreen('enroll');
+  initGradeSelectGrid();
+  goStep(1);
+  document.querySelectorAll('.enroll-grade-card').forEach(c => c.classList.toggle('selected', c.dataset.grade === grade));
+  document.getElementById('step1-next').disabled = false;
+  updatePkgDisplay();
+}
+
+function initGradeSelectGrid() {
+  const grid = document.getElementById('grade-select-grid');
+  grid.innerHTML = Object.entries(GRADES).map(([g, p]) => `
+    <div class="grade-card enroll-grade-card ${state.currentGrade===g?'selected':''}" data-grade="${g}" onclick="selectGrade('${g}')">
+      <div class="grade-card-name">${g}</div>
+      <div class="grade-card-price">${p} <span>EGP</span></div>
+      ${g==='3rd Prep'?'<div class="grade-badge">Special</div>':''}
+      <div class="grade-check">✓</div>
+    </div>`).join('');
+}
+
+function selectGrade(grade) {
+  state.currentGrade = grade;
+  document.querySelectorAll('.enroll-grade-card').forEach(c => c.classList.toggle('selected', c.dataset.grade === grade));
+  document.getElementById('step1-next').disabled = false;
+  updatePkgDisplay();
+}
+
+function updatePkgDisplay() {
+  if (!state.currentGrade) return;
+  document.getElementById('pkg-grade-label').textContent = 'Grade: ' + state.currentGrade;
+  document.getElementById('pkg-price-display').textContent = GRADES[state.currentGrade] + ' EGP';
+}
+
+function goStep(n) {
+  if (n === 2 && !state.currentGrade) { toast('Please select a grade first.'); return; }
+  if (n === 3) {
+    const first = document.getElementById('f-first').value.trim();
+    const last = document.getElementById('f-last').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    if (!first || !last || !phone) { toast('Please fill in all required fields.'); return; }
+  }
+  state.currentStep = n;
+  const labels = ['Grade','Details','Payment','Upload'];
+  [1,2,3,4].forEach(i => {
+    document.getElementById('enroll-step'+i).classList.toggle('hidden', i !== n);
+    const dot = document.getElementById('pdot'+i);
+    if (dot) {
+      dot.classList.remove('done','active');
+      if (i < n) { dot.classList.add('done'); dot.innerHTML = '✓<span class="progress-label">'+labels[i-1]+'</span>'; }
+      else if (i === n) { dot.classList.add('active'); dot.innerHTML = i+'<span class="progress-label">'+labels[i-1]+'</span>'; }
+      else { dot.innerHTML = i+'<span class="progress-label">'+labels[i-1]+'</span>'; }
+    }
+    if (i < 4) { const line = document.getElementById('pline'+i); if (line) line.classList.toggle('done', i < n); }
+  });
+  if (n === 1) initGradeSelectGrid();
+  if (n === 3) updatePkgDisplay();
+  window.scrollTo(0,0);
+}
+
+function handleFileSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  state.uploadedFile = file;
+  state.validationPassed = false;
+  document.getElementById('submit-btn').disabled = true;
+  const reader = new FileReader();
+  reader.onload = e => { state.uploadedDataUrl = e.target.result; showFilePreview(file); validateScreenshot(e.target.result); };
+  reader.readAsDataURL(file);
+}
+
+function showFilePreview(file) {
+  const prev = document.getElementById('file-preview');
+  prev.classList.remove('hidden');
+  prev.innerHTML = `<div class="upload-preview"><div class="upload-preview-icon">🖼️</div><div><div class="upload-preview-name">${file.name}</div><div class="upload-preview-size">${(file.size/1024).toFixed(0)} KB</div></div><button class="remove-btn" onclick="removeFile()">×</button></div>`;
+}
+
+function removeFile() {
+  state.uploadedFile = null; state.uploadedDataUrl = null; state.validationPassed = false;
+  document.getElementById('file-preview').classList.add('hidden');
+  document.getElementById('validation-result').classList.add('hidden');
+  document.getElementById('screenshot-input').value = '';
+  document.getElementById('submit-btn').disabled = true;
+}
+
+async function validateScreenshot(dataUrl) {
+  const box = document.getElementById('validation-result');
+  box.classList.remove('hidden');
+  box.innerHTML = `<div class="validation-box checking"><div class="validation-icon"><span class="spinner"></span></div><div><div class="validation-title">Verifying screenshot…</div><div class="validation-msg">Checking your payment confirmation. This takes a moment.</div></div></div>`;
+  const base64 = dataUrl.split(',')[1];
+  const mediaType = dataUrl.split(';')[0].split(':')[1] || 'image/jpeg';
+  const price = state.currentGrade ? GRADES[state.currentGrade] : '900 or 1050';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514', max_tokens: 400,
+        messages: [{ role: 'user', content: [
+          { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+          { type: 'text', text: `You are a payment verification system for an Egyptian English teacher named Miss Caroline. A student is paying ${price} EGP for English revision sessions via InstaPay (carolinetoubia@instapay).\n\nAnalyze this screenshot and respond ONLY with valid JSON (no markdown, no explanation):\n{"isValid": true/false, "confidence": "high/medium/low", "reason": "brief explanation in 1-2 sentences", "amount": "detected amount or null", "suspicious": true/false, "suspicionReason": "reason if suspicious, else null"}\n\nCheck: 1) Does it look like a real InstaPay or payment app screenshot? 2) Is there a transaction confirmation visible? 3) Any signs of editing (wrong fonts, mismatched colors, pixel artifacts, copy-paste)? 4) Does the amount match ${price} EGP? Be strict but fair.` }
+        ]}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.find(b => b.type === 'text')?.text || '{}';
+    let result;
+    try { result = JSON.parse(text.replace(/```json|```/g, '').trim()); } catch { result = { isValid: false, reason: 'Could not parse verification result. Please try again.' }; }
+    if (result.isValid && !result.suspicious) {
+      state.validationPassed = true;
+      document.getElementById('submit-btn').disabled = false;
+      box.innerHTML = `<div class="validation-box success"><div class="validation-icon">✅</div><div><div class="validation-title">Screenshot verified!</div><div class="validation-msg">${result.reason || 'Payment confirmation looks valid.'}${result.amount ? ' · Amount: '+result.amount : ''}</div></div></div>`;
+    } else {
+      state.validationPassed = false;
+      document.getElementById('submit-btn').disabled = true;
+      box.innerHTML = `<div class="validation-box error"><div class="validation-icon">❌</div><div><div class="validation-title">${result.suspicious ? 'Screenshot may be edited' : 'Verification failed'}</div><div class="validation-msg">${result.suspicionReason || result.reason || 'Could not verify.'} Please upload a clear, unedited screenshot.</div></div></div>`;
+    }
+  } catch {
+    state.validationPassed = true;
+    document.getElementById('submit-btn').disabled = false;
+    box.innerHTML = `<div class="validation-box checking"><div class="validation-icon">⚠️</div><div><div class="validation-title">Auto-verify unavailable</div><div class="validation-msg">Screenshot will be reviewed manually by Miss Caroline.</div></div></div>`;
+  }
+}
+
+async function submitEnrollment() {
+  if (!state.validationPassed) { toast('Please upload a valid screenshot first.'); return; }
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const school = document.getElementById('f-school').value.trim();
+  const student = { id: Date.now().toString(), name: first+' '+last, phone, school, grade: state.currentGrade, amount: GRADES[state.currentGrade], screenshot: state.uploadedDataUrl, status: 'pending', submittedAt: new Date().toISOString() };
+  const students = getStudents(); students.push(student); saveStudents(students);
+  document.getElementById('success-details').innerHTML = `
+    <div class="success-detail-row"><span class="success-detail-label">Name</span><span class="success-detail-val">${student.name}</span></div>
+    <div class="success-detail-row"><span class="success-detail-label">Grade</span><span class="success-detail-val">${student.grade}</span></div>
+    <div class="success-detail-row"><span class="success-detail-label">Amount</span><span class="success-detail-val">${student.amount} EGP</span></div>
+    <div class="success-detail-row"><span class="success-detail-label">Status</span><span class="success-detail-val" style="color:var(--gold-dark);">Pending review</span></div>`;
+  showScreen('success');
+  state.currentGrade = null; state.uploadedFile = null; state.uploadedDataUrl = null; state.validationPassed = false;
+}
+
+function copyInstapy() { navigator.clipboard.writeText(INSTAPY_HANDLE).then(() => toast('InstaPay username copied!')); }
+
+function toast(msg) {
+  const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function adminLogin() {
+  if (document.getElementById('admin-pass').value === ADMIN_PASS) showScreen('admin');
+  else toast('Incorrect password.');
+}
+
+let currentTab = 'payments';
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', ['payments','breakdown','pending'][i] === tab));
+  ['payments','breakdown','pending'].forEach(t => document.getElementById('tab-'+t).classList.toggle('hidden', t !== tab));
+  renderTab(tab);
+}
+
+function renderAdmin() {
+  const students = getStudents();
+  const total = students.reduce((s,x) => s + (x.status !== 'rejected' ? x.amount : 0), 0);
+  const verified = students.filter(x => x.status === 'verified').length;
+  const pending = students.filter(x => x.status === 'pending').length;
+  document.getElementById('admin-stats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value">${total.toLocaleString()}</div><div class="stat-sub">EGP collected</div></div>
+    <div class="stat-card"><div class="stat-label">Total Students</div><div class="stat-value">${students.length}</div><div class="stat-sub">${verified} verified · ${pending} pending</div></div>
+    <div class="stat-card"><div class="stat-label">Verified Payments</div><div class="stat-value">${verified}</div><div class="stat-sub">${students.length > 0 ? Math.round(verified/students.length*100) : 0}% approval rate</div></div>
+    <div class="stat-card"><div class="stat-label">Pending Review</div><div class="stat-value">${pending}</div><div class="stat-sub">Awaiting approval</div></div>`;
+  renderTab(currentTab);
+}
+
+function renderTab(tab) {
+  const students = getStudents();
+  if (tab === 'payments') {
+    document.getElementById('payments-tbody').innerHTML = students.length === 0
+      ? '<tr><td colspan="6" style="text-align:center;color:var(--ink3);padding:2rem;">No enrollments yet.</td></tr>'
+      : students.map(s => `<tr><td><strong>${s.name}</strong><br><span style="font-size:12px;color:var(--ink3);">${s.phone}</span></td><td>${s.grade}</td><td><strong>${s.amount} EGP</strong></td><td>${s.school||'—'}</td><td><span class="badge badge-${s.status}">${s.status}</span></td><td>${s.screenshot?`<button class="btn-ghost" onclick="openModal('${s.id}')" style="font-size:12px;padding:5px 12px;">View</button>`:''} ${s.status==='pending'?`<button class="btn-ghost" onclick="quickApprove('${s.id}')" style="font-size:12px;padding:5px 12px;color:var(--teal);border-color:var(--teal);margin-left:4px;">✓</button>`:'</td>'}`).join('');
+  }
+  if (tab === 'breakdown') {
+    const byGrade = {};
+    Object.keys(GRADES).forEach(g => byGrade[g] = { count:0, revenue:0, price: GRADES[g] });
+    students.filter(s => s.status !== 'rejected').forEach(s => { if (byGrade[s.grade]) { byGrade[s.grade].count++; byGrade[s.grade].revenue += s.amount; } });
+    document.getElementById('breakdown-grid').innerHTML = Object.entries(byGrade).map(([g,d]) => `<div class="breakdown-card"><div class="breakdown-grade">${g}</div><div class="breakdown-row"><span class="breakdown-key">Students</span><span class="breakdown-val">${d.count}</span></div><div class="breakdown-row"><span class="breakdown-key">Price</span><span class="breakdown-val">${d.price} EGP</span></div><div class="breakdown-row"><span class="breakdown-key">Revenue</span><span class="breakdown-val" style="color:var(--teal);">${d.revenue.toLocaleString()} EGP</span></div></div>`).join('');
+    document.getElementById('breakdown-tbody').innerHTML = Object.entries(byGrade).map(([g,d]) => `<tr><td>${g}</td><td>${d.count}</td><td>${d.price} EGP</td><td><strong>${d.revenue.toLocaleString()} EGP</strong></td></tr>`).join('');
+  }
+  if (tab === 'pending') {
+    const pending = students.filter(s => s.status === 'pending');
+    document.getElementById('pending-list').innerHTML = pending.length === 0
+      ? '<div style="text-align:center;padding:3rem;color:var(--ink3);">No pending payments — all reviewed!</div>'
+      : pending.map(s => `<div class="pkg-box" style="margin-bottom:12px;"><div class="pkg-box-header"><div><div class="pkg-box-title">${s.name}</div><div style="font-size:13px;color:var(--ink3);">${s.grade} · ${s.phone}</div></div><div class="pkg-box-price">${s.amount} EGP</div></div><div style="display:flex;gap:8px;">${s.screenshot?`<button class="btn-secondary" onclick="openModal('${s.id}')" style="flex:1;border-color:var(--teal);color:var(--teal);">View Screenshot</button>`:''}<button class="btn-secondary" onclick="quickApprove('${s.id}')" style="flex:1;border-color:var(--teal);color:var(--teal);">✓ Approve</button><button class="btn-secondary" onclick="quickReject('${s.id}')" style="flex:1;border-color:var(--rose);color:var(--rose);">✗ Reject</button></div></div>`).join('');
+  }
+}
+
+function quickApprove(id) { const s=getStudents(); const f=s.find(x=>x.id===id); if(f)f.status='verified'; saveStudents(s); renderAdmin(); toast('Payment approved!'); }
+function quickReject(id) { const s=getStudents(); const f=s.find(x=>x.id===id); if(f)f.status='rejected'; saveStudents(s); renderAdmin(); toast('Payment rejected.'); }
+function openModal(id) { state.modalStudentId=id; const s=getStudents().find(x=>x.id===id); if(!s)return; document.getElementById('modal-student-info').textContent=`${s.name} · ${s.grade} · ${s.amount} EGP`; document.getElementById('modal-img').src=s.screenshot||''; document.getElementById('modal-overlay').classList.remove('hidden'); }
+function closeModal(e) { if(e.target===document.getElementById('modal-overlay'))document.getElementById('modal-overlay').classList.add('hidden'); }
+function approveStudent() { quickApprove(state.modalStudentId); document.getElementById('modal-overlay').classList.add('hidden'); }
+function rejectStudent() { quickReject(state.modalStudentId); document.getElementById('modal-overlay').classList.add('hidden'); }
+
+const zone = document.getElementById('upload-zone');
+zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+zone.addEventListener('drop', e => {
+  e.preventDefault(); zone.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    state.uploadedFile = file;
+    const reader = new FileReader();
+    reader.onload = ev => { state.uploadedDataUrl = ev.target.result; showFilePreview(file); validateScreenshot(ev.target.result); };
+    reader.readAsDataURL(file);
+  }
+});
+</script>
+</body>
+</html>
