@@ -183,6 +183,55 @@
   .config-notice { background: var(--gold-light); border: 1.5px solid var(--gold); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--gold-dark); }
   .config-notice strong { display: block; margin-bottom: 4px; font-size: 14px; }
   .hidden { display: none !important; }
+
+  @media (max-width: 600px) {
+    .site-header { padding: 0 1rem; height: 56px; }
+    .site-logo { font-size: 1rem; }
+    .nav-btn { padding: 5px 10px; font-size: 11px; }
+    .hero { padding: 3rem 1.25rem 2.5rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .hero p { font-size: 0.95rem; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary { width: 100%; max-width: 320px; padding: 14px 20px; }
+    .btn-outline-white { width: 100%; max-width: 320px; padding: 13px 20px; }
+    .package-preview { padding: 1.25rem; margin: 0 0 2rem; }
+    .pkg-items { gap: 8px; }
+    .pkg-item { padding: 10px 6px; }
+    .section { padding: 2rem 1rem; }
+    .section-title { font-size: 1.5rem; }
+    .grade-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .grade-card { padding: 1rem 1rem; }
+    .grade-card-price { font-size: 1rem; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .pkg-components { gap: 6px; }
+    .pkg-comp { padding: 10px 6px; }
+    .instapy-box { flex-wrap: wrap; gap: 8px; }
+    .instapy-handle { font-size: 1rem; }
+    .progress-bar { margin-bottom: 3.5rem; }
+    .progress-label { font-size: 10px; }
+    .upload-zone { padding: 2rem 1rem; min-height: 140px; }
+    .upload-icon { font-size: 2rem; }
+    .tabs { gap: 2px; }
+    .tab-btn { font-size: 12px; padding: 7px 6px; }
+    .admin-stats { grid-template-columns: 1fr 1fr; }
+    .stat-value { font-size: 1.5rem; }
+    .grade-section-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .grade-section-meta { gap: 8px; font-size: 12px; }
+    .modal { padding: 1.25rem; }
+    .success-card { margin: 2rem 1rem; padding: 2rem 1.25rem; }
+    .status-card { margin: 2rem 1rem; padding: 1.5rem; }
+    .admin-login-card { margin: 2rem 1rem; padding: 1.5rem; }
+    .pkg-box { padding: 1.25rem; }
+    .pkg-box-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .pkg-box-price { font-size: 1.3rem; }
+    .step-row { gap: 10px; }
+    .breakdown-grid { grid-template-columns: 1fr 1fr; }
+    th { padding: 8px 10px; font-size: 11px; }
+    td { padding: 10px; font-size: 13px; }
+    .btn-ghost { padding: 8px 12px; font-size: 12px; }
+    .grade-student-row { flex-wrap: wrap; }
+    .grade-student-amount { width: 100%; text-align: right; }
+  }
 </style>
 </head>
 <body>
@@ -302,11 +351,11 @@
     <div id="enroll-step4" class="hidden">
       <h2 class="section-title">Upload payment screenshot</h2>
       <p class="section-sub">Our AI will verify your screenshot automatically.</p>
-      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('screenshot-input').click()">
-        <input type="file" id="screenshot-input" accept="image/*" onchange="handleFileSelect(this)" />
+      <div class="upload-zone" id="upload-zone">
+        <input type="file" id="screenshot-input" accept="image/*" capture="environment" onchange="handleFileSelect(this)" style="position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;z-index:2;" />
         <div class="upload-icon">🖼️</div>
-        <div class="upload-title">Click to upload or drag & drop</div>
-        <div class="upload-sub">PNG, JPG, WEBP — clear screenshot of your InstaPay confirmation</div>
+        <div class="upload-title">Tap to upload screenshot</div>
+        <div class="upload-sub">Choose from gallery or take a photo</div>
       </div>
       <div id="file-preview" class="hidden" style="margin-top:12px;"></div>
       <div id="validation-result" class="hidden"></div>
