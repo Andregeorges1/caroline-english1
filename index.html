@@ -18,8 +18,6 @@
     --shadow: 0 2px 16px rgba(26,26,46,0.08); --shadow-lg: 0 8px 32px rgba(26,26,46,0.12);
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; line-height: 1.6; }
-
-  /* HEADER */
   .site-header { background: var(--ink); color: #fff; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
   .site-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; letter-spacing: 0.02em; }
   .site-logo span { color: var(--gold); }
@@ -27,11 +25,8 @@
   .nav-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 8px; padding: 6px 16px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
   .nav-btn:hover { background: rgba(255,255,255,0.1); }
   .nav-btn.active { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 600; }
-
   .screen { display: none; }
   .screen.visible { display: block; }
-
-  /* HERO */
   .hero { background: var(--ink); color: #fff; padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,168,76,0.18), transparent); pointer-events: none; }
   .hero-tag { display: inline-block; background: var(--gold-light); color: var(--gold-dark); border-radius: 99px; padding: 4px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; }
@@ -39,15 +34,12 @@
   .hero h1 em { color: var(--gold); font-style: normal; }
   .hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 480px; margin: 0 auto 2.5rem; }
   .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
   .package-preview { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); padding: 1.5rem 2rem; max-width: 420px; margin: 0 auto 3rem; text-align: left; }
   .package-preview-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
   .pkg-items { display: flex; gap: 12px; }
   .pkg-item { flex: 1; background: rgba(255,255,255,0.07); border-radius: 10px; padding: 14px 12px; text-align: center; }
   .pkg-icon { font-size: 22px; margin-bottom: 6px; }
   .pkg-label { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 500; }
-
-  /* BUTTONS */
   .btn-primary { background: var(--gold); color: var(--ink); border: none; border-radius: 10px; padding: 14px 36px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
   .btn-primary:hover { background: #d4a93d; transform: translateY(-1px); }
   .btn-outline-white { background: none; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 10px; padding: 13px 28px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
@@ -56,13 +48,9 @@
   .btn-secondary:hover { background: var(--teal-light); }
   .btn-ghost { background: none; color: var(--ink2); border: 1px solid var(--border-strong); border-radius: 10px; padding: 10px 20px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
   .btn-ghost:hover { background: rgba(26,26,46,0.05); }
-
-  /* SECTIONS */
   .section { padding: 3rem 1.5rem; max-width: 760px; margin: 0 auto; }
   .section-title { font-family: 'Playfair Display', serif; font-size: 1.9rem; margin-bottom: 0.4rem; color: var(--ink); }
   .section-sub { color: var(--ink3); font-size: 0.95rem; margin-bottom: 2rem; }
-
-  /* GRADE GRID */
   .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 2rem; }
   .grade-card { background: var(--paper); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; cursor: pointer; transition: all 0.2s; position: relative; }
   .grade-card:hover { border-color: var(--teal); box-shadow: var(--shadow); }
@@ -74,8 +62,6 @@
   .grade-check { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; background: var(--teal); border-radius: 50%; display: none; align-items: center; justify-content: center; color: #fff; font-size: 12px; }
   .grade-card.selected .grade-check { display: flex; }
   .grade-card.selected .grade-badge { display: none; }
-
-  /* PACKAGE BOX */
   .pkg-box { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem; }
   .pkg-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
   .pkg-box-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
@@ -85,8 +71,6 @@
   .pkg-comp-icon { font-size: 1.4rem; margin-bottom: 4px; }
   .pkg-comp-name { font-size: 12px; font-weight: 600; color: var(--ink2); }
   .pkg-comp-desc { font-size: 11px; color: var(--ink3); margin-top: 2px; }
-
-  /* PAYMENT STEPS */
   .payment-steps { margin-bottom: 2rem; }
   .step-row { display: flex; gap: 14px; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid var(--border); }
   .step-row:last-child { border-bottom: none; }
@@ -98,8 +82,6 @@
   .instapy-handle { font-size: 1.1rem; font-weight: 700; color: var(--teal-dark); }
   .copy-btn { margin-left: auto; background: var(--teal); color: #fff; border: none; border-radius: 8px; padding: 6px 14px; font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; }
   .copy-btn:hover { background: var(--teal-dark); }
-
-  /* UPLOAD */
   .upload-zone { border: 2px dashed var(--border-strong); border-radius: var(--radius); padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--paper); position: relative; }
   .upload-zone:hover, .upload-zone.dragover { border-color: var(--teal); background: var(--teal-light); }
   .upload-zone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
@@ -108,15 +90,11 @@
   .upload-sub { font-size: 13px; color: var(--ink3); }
   .upload-preview { margin-top: 14px; padding: 12px 16px; background: var(--cream); border-radius: 10px; display: flex; align-items: center; gap: 10px; text-align: left; }
   .remove-btn { margin-left: auto; background: none; border: none; color: var(--rose); cursor: pointer; font-size: 18px; }
-
-  /* FORM */
   .form-group { margin-bottom: 1.25rem; }
   .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--ink2); margin-bottom: 6px; }
   .form-input { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); background: var(--paper); transition: border-color 0.2s; outline: none; }
   .form-input:focus { border-color: var(--teal); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-  /* VALIDATION */
   .validation-box { border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: 1rem; display: flex; gap: 12px; align-items: flex-start; }
   .validation-box.checking { background: #fff9e6; border: 1px solid #f0c84a; }
   .validation-box.success { background: var(--teal-light); border: 1px solid var(--teal); }
@@ -124,11 +102,8 @@
   .validation-icon { font-size: 1.4rem; }
   .validation-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
   .validation-msg { font-size: 13px; color: var(--ink2); }
-
   .spinner { width: 18px; height: 18px; border: 2px solid rgba(201,168,76,0.3); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* SUCCESS */
   .success-card { background: var(--paper); border-radius: var(--radius-lg); padding: 3rem 2rem; text-align: center; box-shadow: var(--shadow-lg); max-width: 500px; margin: 4rem auto; }
   .success-icon { font-size: 4rem; margin-bottom: 1rem; }
   .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
@@ -137,8 +112,6 @@
   .success-detail-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; }
   .success-detail-label { color: var(--ink3); }
   .success-detail-val { font-weight: 600; }
-
-  /* STATUS CHECK PAGE */
   .status-card { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; max-width: 460px; margin: 4rem auto; box-shadow: var(--shadow); }
   .status-result { border-radius: var(--radius); padding: 1.5rem; margin-top: 1.5rem; text-align: center; }
   .status-result.pending { background: #fff9e6; border: 1px solid #f0c84a; }
@@ -150,8 +123,6 @@
   .status-msg { font-size: 13px; color: var(--ink2); }
   .status-detail-box { background: rgba(255,255,255,0.6); border-radius: 8px; padding: 10px 14px; margin-top: 12px; text-align: left; }
   .status-detail-row { display: flex; justify-content: space-between; font-size: 13px; padding: 3px 0; }
-
-  /* ADMIN */
   .admin-login-card { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem; max-width: 380px; margin: 4rem auto; box-shadow: var(--shadow); }
   .admin-header { background: var(--ink); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .admin-title { color: #fff; font-family: 'Playfair Display', serif; font-size: 1.2rem; }
@@ -160,7 +131,6 @@
   .stat-label { font-size: 12px; color: var(--ink3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
   .stat-value { font-size: 1.9rem; font-weight: 700; color: var(--ink); }
   .stat-sub { font-size: 12px; color: var(--teal); margin-top: 2px; font-weight: 600; }
-
   .table-wrap { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .table-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
   .table-header-title { font-weight: 600; font-size: 0.95rem; }
@@ -173,7 +143,6 @@
   .badge-pending { background: #fff9e6; color: #8b6914; }
   .badge-verified { background: var(--teal-light); color: var(--teal-dark); }
   .badge-rejected { background: var(--rose-light); color: var(--rose); }
-
   .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 2rem; }
   .breakdown-card { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
   .breakdown-grade { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
@@ -193,16 +162,11 @@
   .grade-student-info { font-size: 12px; color: var(--ink3); }
   .grade-student-amount { margin-left: auto; font-weight: 700; color: var(--teal); font-size: 15px; }
   .grade-empty { padding: 1.5rem; text-align: center; color: var(--ink3); font-size: 14px; }
-
   .tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; background: var(--cream); border-radius: 10px; padding: 4px; }
   .tab-btn { flex: 1; padding: 8px 12px; border: none; background: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink3); cursor: pointer; transition: all 0.2s; }
   .tab-btn.active { background: var(--paper); color: var(--ink); font-weight: 600; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-
-  /* TOAST */
   .toast { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--ink); color: #fff; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-lg); transform: translateY(100px); transition: transform 0.3s; pointer-events: none; }
   .toast.show { transform: translateY(0); }
-
-  /* PROGRESS */
   .progress-bar { display: flex; gap: 0; margin-bottom: 2.5rem; }
   .progress-step { flex: 1; display: flex; align-items: center; }
   .progress-dot { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; border: 2px solid var(--border-strong); background: var(--paper); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--ink3); position: relative; z-index: 1; }
@@ -211,18 +175,13 @@
   .progress-line { flex: 1; height: 2px; background: var(--border); }
   .progress-line.done { background: var(--teal); }
   .progress-label { position: absolute; top: 36px; left: 50%; transform: translateX(-50%); font-size: 11px; white-space: nowrap; color: var(--ink3); font-weight: 500; }
-
-  /* MODAL */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1rem; }
   .modal { background: var(--paper); border-radius: var(--radius-lg); padding: 2rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
   .modal-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
   .modal-sub { font-size: 13px; color: var(--ink3); margin-bottom: 1.5rem; }
   .screenshot-img { width: 100%; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1rem; }
-
-  /* SCRIPT CONFIG NOTICE */
   .config-notice { background: var(--gold-light); border: 1.5px solid var(--gold); border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem; font-size: 13px; color: var(--gold-dark); }
   .config-notice strong { display: block; margin-bottom: 4px; font-size: 14px; }
-
   .hidden { display: none !important; }
 </style>
 </head>
@@ -230,7 +189,6 @@
 
 <div class="toast" id="toast"></div>
 
-<!-- HEADER -->
 <header class="site-header">
   <div class="site-logo">Miss <span>Caroline</span> · English</div>
   <div class="header-nav">
@@ -241,7 +199,6 @@
   </div>
 </header>
 
-<!-- ═══════════════════════════════ HOME ═══════════════════════════════ -->
 <div id="screen-home" class="screen visible">
   <div class="hero">
     <div class="hero-tag">2025–2026 Academic Year</div>
@@ -273,7 +230,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ ENROLL ═══════════════════════════════ -->
 <div id="screen-enroll" class="screen">
   <div class="section" style="max-width:640px;">
     <div class="progress-bar" style="margin-bottom:3rem; position:relative;">
@@ -282,16 +238,12 @@
       <div class="progress-step" style="position:relative;"><div class="progress-dot" id="pdot3">3<span class="progress-label">Payment</span></div><div class="progress-line" id="pline3"></div></div>
       <div class="progress-step" style="position:relative;"><div class="progress-dot" id="pdot4">4<span class="progress-label">Upload</span></div></div>
     </div>
-
-    <!-- Step 1: Grade -->
     <div id="enroll-step1">
       <h2 class="section-title">Choose your grade</h2>
       <p class="section-sub">The revision package is one complete bundle — cannot be separated.</p>
       <div class="grade-grid" id="grade-select-grid"></div>
       <button class="btn-primary" onclick="goStep(2)" id="step1-next" disabled style="width:100%;">Continue →</button>
     </div>
-
-    <!-- Step 2: Details -->
     <div id="enroll-step2" class="hidden">
       <h2 class="section-title">Your details</h2>
       <p class="section-sub">You'll receive a confirmation email once your payment is verified.</p>
@@ -307,8 +259,6 @@
         <button class="btn-primary" onclick="goStep(3)" style="flex:2;">Continue →</button>
       </div>
     </div>
-
-    <!-- Step 3: Payment -->
     <div id="enroll-step3" class="hidden">
       <h2 class="section-title">Complete your payment</h2>
       <p class="section-sub">Send the exact amount to the InstaPay account below.</p>
@@ -349,8 +299,6 @@
         <button class="btn-primary" onclick="goStep(4)" style="flex:2;">I've paid → Upload Screenshot</button>
       </div>
     </div>
-
-    <!-- Step 4: Upload -->
     <div id="enroll-step4" class="hidden">
       <h2 class="section-title">Upload payment screenshot</h2>
       <p class="section-sub">Our AI will verify your screenshot automatically.</p>
@@ -373,7 +321,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ SUCCESS ═══════════════════════════════ -->
 <div id="screen-success" class="screen">
   <div class="success-card">
     <div class="success-icon">🎉</div>
@@ -391,7 +338,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ STATUS CHECK ═══════════════════════════════ -->
 <div id="screen-status" class="screen">
   <div class="status-card">
     <div style="text-align:center;margin-bottom:2rem;">
@@ -408,7 +354,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ ADMIN LOGIN ═══════════════════════════════ -->
 <div id="screen-admin-login" class="screen">
   <div class="admin-login-card">
     <div style="text-align:center;margin-bottom:2rem;">
@@ -421,7 +366,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════ ADMIN DASHBOARD ═══════════════════════════════ -->
 <div id="screen-admin" class="screen">
   <div class="admin-header">
     <div class="admin-title">📊 Payment Dashboard — Miss Caroline</div>
@@ -463,7 +407,6 @@
   </div>
 </div>
 
-<!-- MODAL -->
 <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-title">Review Payment Screenshot</div>
@@ -477,27 +420,16 @@
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════
-// CONFIGURATION — paste your Google Apps Script URL here
-// ═══════════════════════════════════════════════════════════
-const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
-// ═══════════════════════════════════════════════════════════
-
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec';
 const GRADES = { '1st Prep': 1000, '2nd Prep': 1000, '3rd Prep': 1000, '1st Sec': 1000, '2nd Sec': 1000 };
 const ADMIN_PASS = 'caroline2025';
 const INSTAPY_HANDLE = '01223412275';
 
-let state = {
-  currentGrade: null, currentStep: 1,
-  uploadedFile: null, uploadedDataUrl: null,
-  validationPassed: false, modalStudentId: null
-};
+let state = { currentGrade: null, currentStep: 1, uploadedFile: null, uploadedDataUrl: null, validationPassed: false, modalStudentId: null };
 
-// ── LOCAL STORAGE (fallback when sheet not connected) ──
 function getStudents() { try { return JSON.parse(localStorage.getItem('students_caroline') || '[]'); } catch { return []; } }
 function saveStudents(arr) { localStorage.setItem('students_caroline', JSON.stringify(arr)); }
 
-// ── SCREEN NAVIGATION ──
 function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -523,7 +455,6 @@ function startEnroll(grade) {
   updatePkgDisplay();
 }
 
-// ── GRADE GRID ──
 function initGradeSelectGrid() {
   document.getElementById('grade-select-grid').innerHTML = Object.entries(GRADES).map(([g, p]) => `
     <div class="grade-card enroll-grade-card ${state.currentGrade===g?'selected':''}" data-grade="${g}" onclick="selectGrade('${g}')">
@@ -546,7 +477,6 @@ function updatePkgDisplay() {
   document.getElementById('pkg-price-display').textContent = GRADES[state.currentGrade] + ' EGP';
 }
 
-// ── STEP NAVIGATION ──
 function goStep(n) {
   if (n === 2 && !state.currentGrade) { toast('Please select a grade first.'); return; }
   if (n === 3) {
@@ -575,7 +505,6 @@ function goStep(n) {
   window.scrollTo(0, 0);
 }
 
-// ── FILE UPLOAD ──
 function handleFileSelect(input) {
   const file = input.files[0];
   if (!file) return;
@@ -601,14 +530,13 @@ function removeFile() {
   document.getElementById('submit-btn').disabled = true;
 }
 
-// ── AI SCREENSHOT VALIDATION ──
 async function validateScreenshot(dataUrl) {
   const box = document.getElementById('validation-result');
   box.classList.remove('hidden');
   box.innerHTML = `<div class="validation-box checking"><div class="validation-icon"><span class="spinner"></span></div><div><div class="validation-title">Verifying screenshot…</div><div class="validation-msg">Our AI is checking your payment confirmation.</div></div></div>`;
   const base64 = dataUrl.split(',')[1];
   const mediaType = dataUrl.split(';')[0].split(':')[1] || 'image/jpeg';
-  const price = state.currentGrade ? GRADES[state.currentGrade] : '900 or 1050';
+  const price = state.currentGrade ? GRADES[state.currentGrade] : '1000';
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -639,7 +567,6 @@ async function validateScreenshot(dataUrl) {
   }
 }
 
-// ── SUBMIT ENROLLMENT ──
 async function submitEnrollment() {
   if (!state.validationPassed) { toast('Please upload a valid screenshot first.'); return; }
   const first = document.getElementById('f-first').value.trim();
@@ -647,7 +574,6 @@ async function submitEnrollment() {
   const email = document.getElementById('f-email').value.trim();
   const phone = document.getElementById('f-phone').value.trim();
   const school = document.getElementById('f-school').value.trim();
-
   const student = {
     id: Date.now().toString(),
     name: first + ' ' + last,
@@ -658,26 +584,16 @@ async function submitEnrollment() {
     status: 'pending',
     submittedAt: new Date().toISOString()
   };
-
-  // Show sending state
   document.getElementById('submit-btn').disabled = true;
   document.getElementById('submit-sending').classList.remove('hidden');
-
-  // Save locally always
   const students = getStudents(); students.push(student); saveStudents(students);
-
-  // Try to send to Google Sheet
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'submit', student })
-      });
-    } catch(e) { console.warn('Sheet sync failed, saved locally only.'); }
-  }
-
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'submit', student })
+    });
+  } catch(e) { console.warn('Sheet sync failed, saved locally only.'); }
   document.getElementById('submit-sending').classList.add('hidden');
   document.getElementById('success-details').innerHTML = `
     <div class="success-detail-row"><span class="success-detail-label">Name</span><span class="success-detail-val">${student.name}</span></div>
@@ -689,7 +605,6 @@ async function submitEnrollment() {
   state.currentGrade = null; state.uploadedFile = null; state.uploadedDataUrl = null; state.validationPassed = false;
 }
 
-// ── STATUS CHECK ──
 async function checkStatus() {
   const query = document.getElementById('status-query').value.trim();
   if (!query) { toast('Please enter your phone or email.'); return; }
@@ -697,32 +612,22 @@ async function checkStatus() {
   const resultDiv = document.getElementById('status-result');
   btn.disabled = true; btn.textContent = 'Checking…';
   resultDiv.innerHTML = `<div class="validation-box checking"><div class="validation-icon"><span class="spinner"></span></div><div><div class="validation-title">Looking up your enrollment…</div></div></div>`;
-
   let found = null;
-
-  // Try Google Sheet first
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-    try {
-      const res = await fetch(SCRIPT_URL + '?action=checkStatus&query=' + encodeURIComponent(query));
-      const data = await res.json();
-      if (data.found) found = data.student;
-    } catch(e) { /* fallback to local */ }
-  }
-
-  // Fallback to localStorage
+  try {
+    const res = await fetch(SCRIPT_URL + '?action=checkStatus&query=' + encodeURIComponent(query));
+    const data = await res.json();
+    if (data.found) found = data.student;
+  } catch(e) { /* fallback to local */ }
   if (!found) {
     const students = getStudents();
     const q = query.toLowerCase();
-    found = students.find(s => s.phone === query || s.email.toLowerCase() === q) || null;
+    found = students.find(s => s.phone === query || (s.email && s.email.toLowerCase() === q)) || null;
   }
-
   btn.disabled = false; btn.textContent = 'Check My Status';
-
   if (!found) {
     resultDiv.innerHTML = `<div class="status-result not-found"><div class="status-emoji">🔎</div><div class="status-label">Not found</div><div class="status-msg">No enrollment found for this phone or email. If you just submitted, please wait a few minutes and try again.</div></div>`;
     return;
   }
-
   const configs = {
     pending: { cls:'pending', emoji:'⏳', label:'Payment Pending Review', msg:'Miss Caroline will review your payment shortly. You\'ll receive an email once it\'s approved.' },
     verified: { cls:'verified', emoji:'✅', label:'Payment Verified!', msg:'Your enrollment is confirmed. Welcome to Miss Caroline\'s revision sessions!' },
@@ -744,23 +649,19 @@ async function checkStatus() {
     </div>`;
 }
 
-// ── COPY ──
 function copyInstapy() { navigator.clipboard.writeText(INSTAPY_HANDLE).then(() => toast('InstaPay number copied!')); }
 
-// ── TOAST ──
 function toast(msg) {
   const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show');
   setTimeout(() => el.classList.remove('show'), 3000);
 }
 
-// ── ADMIN ──
 function adminLogin() {
   if (document.getElementById('admin-pass').value === ADMIN_PASS) showScreen('admin');
   else toast('Incorrect password.');
 }
 
 async function loadFromSheet() {
-  if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
   try {
     const res = await fetch(SCRIPT_URL + '?action=getAll');
     const data = await res.json();
@@ -811,34 +712,27 @@ function renderTab(tab) {
     const byGrade = {};
     Object.keys(GRADES).forEach(g => byGrade[g] = { students: [], count: 0, revenue: 0, price: GRADES[g] });
     students.filter(s => s.status !== 'rejected').forEach(s => {
-      if (byGrade[s.grade]) {
-        byGrade[s.grade].students.push(s);
-        byGrade[s.grade].count++;
-        byGrade[s.grade].revenue += s.amount;
-      }
+      if (byGrade[s.grade]) { byGrade[s.grade].students.push(s); byGrade[s.grade].count++; byGrade[s.grade].revenue += s.amount; }
     });
-
-    // Per-grade sections with student names
     document.getElementById('breakdown-by-grade').innerHTML = Object.entries(byGrade).map(([g, d]) => {
       const initials = name => name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
       const studentRows = d.students.length === 0
         ? `<div class="grade-empty">No students enrolled yet</div>`
-        : d.students.map((s, i) => `
+        : d.students.map(s => `
           <div class="grade-student-row">
             <div class="grade-student-avatar">${initials(s.name)}</div>
             <div style="flex:1;">
               <div class="grade-student-name">${s.name}</div>
-              <div class="grade-student-info">${s.phone || ''}${s.phone && s.email ? ' · ' : ''}${s.email || ''} · <span class="badge badge-${s.status}" style="font-size:11px;padding:2px 8px;">${s.status}</span></div>
+              <div class="grade-student-info">${s.phone||''}${s.phone&&s.email?' · ':''}${s.email||''} · <span class="badge badge-${s.status}" style="font-size:11px;padding:2px 8px;">${s.status}</span></div>
             </div>
             <div class="grade-student-amount">${s.amount} EGP</div>
           </div>`).join('');
-
       return `
         <div class="grade-section">
           <div class="grade-section-header">
             <div class="grade-section-title">${g}</div>
             <div class="grade-section-meta">
-              <span>${d.count} student${d.count !== 1 ? 's' : ''}</span>
+              <span>${d.count} student${d.count!==1?'s':''}</span>
               <span>·</span>
               <span>${d.price} EGP each</span>
               <span>·</span>
@@ -848,22 +742,12 @@ function renderTab(tab) {
           <div class="grade-section-body">${studentRows}</div>
         </div>`;
     }).join('');
-
-    // Summary table
     const grandTotal = Object.values(byGrade).reduce((s, d) => s + d.revenue, 0);
     document.getElementById('grand-total').textContent = grandTotal.toLocaleString() + ' EGP total';
     document.getElementById('breakdown-tbody').innerHTML =
       Object.entries(byGrade).map(([g, d]) =>
-        `<tr>
-          <td><strong>${g}</strong></td>
-          <td>${d.count}</td>
-          <td>${d.price} EGP</td>
-          <td><strong style="color:var(--teal);">${d.revenue.toLocaleString()} EGP</strong></td>
-        </tr>`).join('') +
-      `<tr style="background:var(--cream);">
-        <td colspan="3" style="font-weight:700;text-align:right;padding-right:1rem;">Grand Total</td>
-        <td><strong style="color:var(--teal);font-size:1.1rem;">${grandTotal.toLocaleString()} EGP</strong></td>
-      </tr>`;
+        `<tr><td><strong>${g}</strong></td><td>${d.count}</td><td>${d.price} EGP</td><td><strong style="color:var(--teal);">${d.revenue.toLocaleString()} EGP</strong></td></tr>`).join('') +
+      `<tr style="background:var(--cream);"><td colspan="3" style="font-weight:700;text-align:right;padding-right:1rem;">Grand Total</td><td><strong style="color:var(--teal);font-size:1.1rem;">${grandTotal.toLocaleString()} EGP</strong></td></tr>`;
   }
   if (tab === 'pending') {
     const pending = students.filter(s => s.status === 'pending');
@@ -881,17 +765,13 @@ async function updateStatus(id, newStatus) {
   saveStudents(students);
   renderAdmin();
   toast(newStatus === 'verified' ? 'Payment approved! Notifying student…' : 'Payment rejected. Notifying student…');
-
-  // Notify via Google Sheet / email
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'updateStatus', id, status: newStatus, studentName: s.name, studentEmail: s.email, grade: s.grade, amount: s.amount })
-      });
-    } catch(e) { console.warn('Could not send notification.'); }
-  }
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'updateStatus', id, status: newStatus, studentName: s.name, studentEmail: s.email, grade: s.grade, amount: s.amount })
+    });
+  } catch(e) { console.warn('Could not send notification.'); }
 }
 
 function openModal(id) {
@@ -906,7 +786,6 @@ function closeModal(e) { if(e.target===document.getElementById('modal-overlay'))
 function approveStudent() { updateStatus(state.modalStudentId,'verified'); document.getElementById('modal-overlay').classList.add('hidden'); }
 function rejectStudent() { updateStatus(state.modalStudentId,'rejected'); document.getElementById('modal-overlay').classList.add('hidden'); }
 
-// Drag & drop
 const zone = document.getElementById('upload-zone');
 zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
 zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
