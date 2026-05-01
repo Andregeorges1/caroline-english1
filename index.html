@@ -266,7 +266,7 @@
     <div class="grade-grid">
       <div class="grade-card" onclick="startEnroll('1st Prep')"><div class="grade-card-name">1st Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
       <div class="grade-card" onclick="startEnroll('2nd Prep')"><div class="grade-card-name">2nd Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
-      <div class="grade-card" onclick="startEnroll('3rd Prep')"><div class="grade-card-name">3rd Prep</div><div class="grade-card-price">1050 <span>EGP</span></div><div class="grade-badge">Special</div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('3rd Prep')"><div class="grade-card-name">3rd Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
       <div class="grade-card" onclick="startEnroll('1st Sec')"><div class="grade-card-name">1st Sec</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
       <div class="grade-card" onclick="startEnroll('2nd Sec')"><div class="grade-card-name">2nd Sec</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
     </div>
@@ -484,8 +484,8 @@ const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 // ═══════════════════════════════════════════════════════════
 
 const GRADES = { '1st Prep': 1000, '2nd Prep': 1000, '3rd Prep': 1000, '1st Sec': 1000, '2nd Sec': 1000 };
-const ADMIN_PASS = 'caroline1975';
-const INSTAPY_HANDLE = '01223412275';
+const ADMIN_PASS = 'caroline2025';
+const INSTAPY_HANDLE = '01278444756';
 
 let state = {
   currentGrade: null, currentStep: 1,
@@ -529,7 +529,6 @@ function initGradeSelectGrid() {
     <div class="grade-card enroll-grade-card ${state.currentGrade===g?'selected':''}" data-grade="${g}" onclick="selectGrade('${g}')">
       <div class="grade-card-name">${g}</div>
       <div class="grade-card-price">${p} <span>EGP</span></div>
-      ${g==='3rd Prep'?'<div class="grade-badge">Special</div>':''}
       <div class="grade-check">✓</div>
     </div>`).join('');
 }
@@ -617,7 +616,7 @@ async function validateScreenshot(dataUrl) {
         model: 'claude-sonnet-4-20250514', max_tokens: 400,
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-          { type: 'text', text: `You are a payment verification system for Miss Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (01223412275).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
+          { type: 'text', text: `You are a payment verification system for Miss Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (carolinetoubia@instapay).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
         ]}]
       })
     });
@@ -746,7 +745,7 @@ async function checkStatus() {
 }
 
 // ── COPY ──
-function copyInstapy() { navigator.clipboard.writeText(INSTAPY_HANDLE).then(() => toast('InstaPay username copied!')); }
+function copyInstapy() { navigator.clipboard.writeText(INSTAPY_HANDLE).then(() => toast('InstaPay number copied!')); }
 
 // ── TOAST ──
 function toast(msg) {
