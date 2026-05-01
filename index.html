@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>English Revision – Miss Caroline</title>
+<title>English Revision – Madame Caroline</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -239,7 +239,7 @@
 <div class="toast" id="toast"></div>
 
 <header class="site-header">
-  <div class="site-logo">Miss <span>Caroline</span> · English</div>
+  <div class="site-logo">Madame <span>Caroline</span> · English</div>
   <div class="header-nav">
     <button class="nav-btn active" onclick="showScreen('home')">Home</button>
     <button class="nav-btn" onclick="showScreen('enroll')">Book Now</button>
@@ -340,7 +340,7 @@
         </div>
         <div class="step-row">
           <div class="step-num">3</div>
-          <div class="step-content"><div class="step-label">Upload on the next step</div><div class="step-desc">Your screenshot will be verified automatically, then reviewed by Miss Caroline.</div></div>
+          <div class="step-content"><div class="step-label">Upload on the next step</div><div class="step-desc">Your screenshot will be verified automatically, then reviewed by Madame Caroline.</div></div>
         </div>
       </div>
       <div style="display:flex; gap:10px;">
@@ -374,11 +374,11 @@
   <div class="success-card">
     <div class="success-icon">🎉</div>
     <div class="success-title">Enrollment Submitted!</div>
-    <div class="success-sub">A confirmation email has been sent to you. Miss Caroline will review your payment and you'll get another email once it's approved.</div>
+    <div class="success-sub">A confirmation email has been sent to you. Madame Caroline will review your payment and you'll get another email once it's approved.</div>
     <div class="success-details" id="success-details"></div>
     <div style="background:var(--teal-light);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:13px;color:var(--teal-dark);">
       <strong style="display:block;margin-bottom:4px;">📧 Check your email inbox</strong>
-      You'll receive a notification email the moment Miss Caroline approves or rejects your payment. You can also check your status anytime using the <strong>Check Status</strong> page.
+      You'll receive a notification email the moment Madame Caroline approves or rejects your payment. You can also check your status anytime using the <strong>Check Status</strong> page.
     </div>
     <div style="display:flex;gap:10px;">
       <button class="btn-ghost" onclick="showScreen('status')" style="flex:1;">Check Status</button>
@@ -408,7 +408,7 @@
     <div style="text-align:center;margin-bottom:2rem;">
       <div style="font-size:2.5rem;margin-bottom:0.75rem;">🔐</div>
       <div style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:0.25rem;">Admin Access</div>
-      <div style="font-size:13px;color:var(--ink3);">Miss Caroline's dashboard</div>
+      <div style="font-size:13px;color:var(--ink3);">Madame Caroline's dashboard</div>
     </div>
     <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" id="admin-pass" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')adminLogin()" /></div>
     <button class="btn-primary" onclick="adminLogin()" style="width:100%;">Sign In</button>
@@ -417,7 +417,7 @@
 
 <div id="screen-admin" class="screen">
   <div class="admin-header">
-    <div class="admin-title">📊 Payment Dashboard — Miss Caroline</div>
+    <div class="admin-title">📊 Payment Dashboard — Madame Caroline</div>
     <button class="nav-btn" onclick="showScreen('home')" style="font-size:12px;">Sign Out</button>
   </div>
   <div class="section" style="max-width:960px;">
@@ -593,7 +593,7 @@ async function validateScreenshot(dataUrl) {
         model: 'claude-sonnet-4-20250514', max_tokens: 400,
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-          { type: 'text', text: `You are a payment verification system for Miss Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (number: 01223412275).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
+          { type: 'text', text: `You are a payment verification system for Madame Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (number: 01223412275).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
         ]}]
       })
     });
@@ -612,7 +612,7 @@ async function validateScreenshot(dataUrl) {
   } catch {
     state.validationPassed = true;
     document.getElementById('submit-btn').disabled = false;
-    box.innerHTML = `<div class="validation-box checking"><div class="validation-icon">⚠️</div><div><div class="validation-title">Auto-verify unavailable</div><div class="validation-msg">Screenshot will be reviewed manually by Miss Caroline.</div></div></div>`;
+    box.innerHTML = `<div class="validation-box checking"><div class="validation-icon">⚠️</div><div><div class="validation-title">Auto-verify unavailable</div><div class="validation-msg">Screenshot will be reviewed manually by Madame Caroline.</div></div></div>`;
   }
 }
 
@@ -678,9 +678,9 @@ async function checkStatus() {
     return;
   }
   const configs = {
-    pending: { cls:'pending', emoji:'⏳', label:'Payment Pending Review', msg:'Miss Caroline will review your payment shortly. You\'ll receive an email once it\'s approved.' },
-    verified: { cls:'verified', emoji:'✅', label:'Payment Verified!', msg:'Your enrollment is confirmed. Welcome to Miss Caroline\'s revision sessions!' },
-    rejected: { cls:'rejected', emoji:'❌', label:'Payment Not Verified', msg:'Your payment could not be verified. Please contact Miss Caroline or re-submit with a clearer screenshot.' }
+    pending: { cls:'pending', emoji:'⏳', label:'Payment Pending Review', msg:'Madame Caroline will review your payment shortly. You\'ll receive an email once it\'s approved.' },
+    verified: { cls:'verified', emoji:'✅', label:'Payment Verified!', msg:'Your enrollment is confirmed. Welcome to Madame Caroline\'s revision sessions!' },
+    rejected: { cls:'rejected', emoji:'❌', label:'Payment Not Verified', msg:'Your payment could not be verified. Please contact Madame Caroline or re-submit with a clearer screenshot.' }
   };
   const c = configs[found.status] || configs.pending;
   const date = new Date(found.submittedAt).toLocaleDateString('en-EG', { year:'numeric', month:'long', day:'numeric' });
