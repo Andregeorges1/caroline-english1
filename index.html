@@ -480,11 +480,11 @@
 // ═══════════════════════════════════════════════════════════
 // CONFIGURATION — paste your Google Apps Script URL here
 // ═══════════════════════════════════════════════════════════
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoAb_Qbhf16sqdbqMrqiwDP8-Fpib7C5RGnpgUPxGgSVuKfnLZQk5_rFCjHUQJBlpb/exec';
+const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 // ═══════════════════════════════════════════════════════════
 
 const GRADES = { '1st Prep': 1000, '2nd Prep': 1000, '3rd Prep': 1000, '1st Sec': 1000, '2nd Sec': 1000 };
-const ADMIN_PASS = 'ca1975';
+const ADMIN_PASS = 'caroline2025';
 const INSTAPY_HANDLE = '01223412275';
 
 let state = {
@@ -509,7 +509,7 @@ function showScreen(name) {
 
 function checkScriptConfig() {
   const warn = document.getElementById('script-config-warning');
-  if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') warn.classList.remove('hidden');
+  if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') warn.classList.remove('hidden');
   else warn.classList.add('hidden');
 }
 
@@ -608,7 +608,7 @@ async function validateScreenshot(dataUrl) {
   box.innerHTML = `<div class="validation-box checking"><div class="validation-icon"><span class="spinner"></span></div><div><div class="validation-title">Verifying screenshot…</div><div class="validation-msg">Our AI is checking your payment confirmation.</div></div></div>`;
   const base64 = dataUrl.split(',')[1];
   const mediaType = dataUrl.split(';')[0].split(':')[1] || 'image/jpeg';
-  const price = state.currentGrade ? GRADES[state.currentGrade] : '1000';
+  const price = state.currentGrade ? GRADES[state.currentGrade] : '900 or 1050';
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -616,7 +616,7 @@ async function validateScreenshot(dataUrl) {
         model: 'claude-sonnet-4-20250514', max_tokens: 400,
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-          { type: 'text', text: `You are a payment verification system for Miss Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (carolinetoubia@instapay).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
+          { type: 'text', text: `You are a payment verification system for Miss Caroline, an Egyptian English teacher. A student is paying ${price} EGP via InstaPay (number: 01223412275).\n\nAnalyze this screenshot and respond ONLY with valid JSON:\n{"isValid":true/false,"confidence":"high/medium/low","reason":"1-2 sentences","amount":"detected amount or null","suspicious":true/false,"suspicionReason":"reason or null"}\n\nCheck: 1) Does it look like a real InstaPay/payment app screenshot? 2) Is there a clear transaction confirmation? 3) Any editing signs (wrong fonts, pixel artifacts, mismatched colors)? 4) Does amount match ${price} EGP?` }
         ]}]
       })
     });
@@ -667,7 +667,7 @@ async function submitEnrollment() {
   const students = getStudents(); students.push(student); saveStudents(students);
 
   // Try to send to Google Sheet
-  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
+  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
@@ -701,7 +701,7 @@ async function checkStatus() {
   let found = null;
 
   // Try Google Sheet first
-  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
+  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
     try {
       const res = await fetch(SCRIPT_URL + '?action=checkStatus&query=' + encodeURIComponent(query));
       const data = await res.json();
@@ -760,7 +760,7 @@ function adminLogin() {
 }
 
 async function loadFromSheet() {
-  if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') return;
+  if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
   try {
     const res = await fetch(SCRIPT_URL + '?action=getAll');
     const data = await res.json();
@@ -883,7 +883,7 @@ async function updateStatus(id, newStatus) {
   toast(newStatus === 'verified' ? 'Payment approved! Notifying student…' : 'Payment rejected. Notifying student…');
 
   // Notify via Google Sheet / email
-  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
+  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST', mode: 'no-cors',
