@@ -589,8 +589,8 @@ async function submitEnrollment() {
   const students = getStudents(); students.push(student); saveStudents(students);
   try {
     await fetch(SCRIPT_URL, {
-      method: 'POST', mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'submit', student })
     });
   } catch(e) { console.warn('Sheet sync failed, saved locally only.'); }
@@ -767,8 +767,8 @@ async function updateStatus(id, newStatus) {
   toast(newStatus === 'verified' ? 'Payment approved! Notifying student…' : 'Payment rejected. Notifying student…');
   try {
     await fetch(SCRIPT_URL, {
-      method: 'POST', mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'updateStatus', id, status: newStatus, studentName: s.name, studentEmail: s.email, grade: s.grade, amount: s.amount })
     });
   } catch(e) { console.warn('Could not send notification.'); }
