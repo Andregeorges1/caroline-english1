@@ -509,7 +509,7 @@ function showScreen(name) {
 
 function checkScriptConfig() {
   const warn = document.getElementById('script-config-warning');
-  if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') warn.classList.remove('hidden');
+  if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') warn.classList.remove('hidden');
   else warn.classList.add('hidden');
 }
 
@@ -667,7 +667,7 @@ async function submitEnrollment() {
   const students = getStudents(); students.push(student); saveStudents(students);
 
   // Try to send to Google Sheet
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST',
@@ -701,7 +701,7 @@ async function checkStatus() {
   let found = null;
 
   // Try Google Sheet first
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
     try {
       const res = await fetch(SCRIPT_URL + '?action=checkStatus&query=' + encodeURIComponent(query));
       const data = await res.json();
@@ -760,7 +760,7 @@ function adminLogin() {
 }
 
 async function loadFromSheet() {
-  if (SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
+  if (SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') return;
   try {
     const res = await fetch(SCRIPT_URL + '?action=getAll');
     const data = await res.json();
@@ -883,7 +883,7 @@ async function updateStatus(id, newStatus) {
   toast(newStatus === 'verified' ? 'Payment approved! Notifying student…' : 'Payment rejected. Notifying student…');
 
   // Notify via Google Sheet / email
-  if (SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+  if (SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbwyUOcU1EyonueARQrbc6FzZ6PMj8Y7f2iXLGtAH97sbobJPoDlzLmNILmCQGQMDwFW/exec') {
     try {
       await fetch(SCRIPT_URL, {
         method: 'POST', mode: 'no-cors',
