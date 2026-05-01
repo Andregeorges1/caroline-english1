@@ -251,11 +251,11 @@
     <h2 class="section-title">Available Grades & Pricing</h2>
     <p class="section-sub">One complete revision package — Vocabulary, Grammar & Story together.</p>
     <div class="grade-grid">
-      <div class="grade-card" onclick="startEnroll('1st Prep')"><div class="grade-card-name">1st Prep</div><div class="grade-card-price">900 <span>EGP</span></div><div class="grade-check">✓</div></div>
-      <div class="grade-card" onclick="startEnroll('2nd Prep')"><div class="grade-card-name">2nd Prep</div><div class="grade-card-price">900 <span>EGP</span></div><div class="grade-check">✓</div></div>
-      <div class="grade-card" onclick="startEnroll('3rd Prep')"><div class="grade-card-name">3rd Prep</div><div class="grade-card-price">1050 <span>EGP</span></div><div class="grade-badge">Special</div><div class="grade-check">✓</div></div>
-      <div class="grade-card" onclick="startEnroll('1st Sec')"><div class="grade-card-name">1st Sec</div><div class="grade-card-price">900 <span>EGP</span></div><div class="grade-check">✓</div></div>
-      <div class="grade-card" onclick="startEnroll('2nd Sec')"><div class="grade-card-name">2nd Sec</div><div class="grade-card-price">900 <span>EGP</span></div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('1st Prep')"><div class="grade-card-name">1st Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('2nd Prep')"><div class="grade-card-name">2nd Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('3rd Prep')"><div class="grade-card-name">3rd Prep</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-badge">Special</div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('1st Sec')"><div class="grade-card-name">1st Sec</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
+      <div class="grade-card" onclick="startEnroll('2nd Sec')"><div class="grade-card-name">2nd Sec</div><div class="grade-card-price">1000 <span>EGP</span></div><div class="grade-check">✓</div></div>
     </div>
   </div>
 </div>
@@ -467,7 +467,7 @@
 const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 // ═══════════════════════════════════════════════════════════
 
-const GRADES = { '1st Prep': 5, '2nd Prep': 5, '3rd Prep': 5, '1st Sec': 5, '2nd Sec': 5 };
+const GRADES = { '1st Prep': 1000, '2nd Prep': 1000, '3rd Prep': 1000, '1st Sec': 1000, '2nd Sec': 1000 };
 const ADMIN_PASS = 'caroline1975';
 const INSTAPY_HANDLE = 'carolinetoubia@instapay';
 
@@ -592,7 +592,7 @@ async function validateScreenshot(dataUrl) {
   box.innerHTML = `<div class="validation-box checking"><div class="validation-icon"><span class="spinner"></span></div><div><div class="validation-title">Verifying screenshot…</div><div class="validation-msg">Our AI is checking your payment confirmation.</div></div></div>`;
   const base64 = dataUrl.split(',')[1];
   const mediaType = dataUrl.split(';')[0].split(':')[1] || 'image/jpeg';
-  const price = state.currentGrade ? GRADES[state.currentGrade] : '900 or 1050';
+  const price = state.currentGrade ? GRADES[state.currentGrade] : '1000';
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
